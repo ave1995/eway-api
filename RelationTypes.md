@@ -3,7 +3,7 @@ In some situations when using our API, you may encounter the concept of Relation
 
 Below is a list of 1:N RelationTypes and their respective folders that could be linked together within the system:
 
-| RelationTypeID | RelationType | FolderName1 | FolderName2 |
+| RelationTypeID | RelationType | Parent FolderName | Child FolderName |
 |--|--|--|--|
 | 7 | BONUSPERSON | Users | Bonuses |
 | 8 | BONUSPROJECT | Projects | Bonuses |
