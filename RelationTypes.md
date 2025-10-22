@@ -1,0 +1,73 @@
+# RelationTypes
+In some situations when using our API, you may encounter the concept of RelationTypes. Each RelationType defines how items from different folders in eWay-CRM are related (e.g a Company to a Lead).
+
+Below is a list of 1:N RelationTypes and their respective folders that could be linked together within the system:
+
+| RelationTypeID | RelationType | Parent FolderName | Child FolderName |
+|--|--|--|--|
+| 7 | BONUSPERSON | Users | Bonuses |
+| 8 | BONUSPROJECT | Projects | Bonuses |
+| 9 | CART | Projects | Carts |
+| 9 | CART | Leads | Carts |
+| 10 | CONTACTPERSON | Contacts | Leads |
+| 10 | CONTACTPERSON | Contacts | Projects |
+| 10 | CONTACTPERSON | Contacts | Carts |
+| 11 | CONTACT | Contacts | Journal |
+| 11 | CONTACT | Contacts | Documents |
+| 11 | CONTACT | Contacts | Tasks |
+| 12 | CUSTOMER | Companies | Projects |
+| 12 | CUSTOMER | Companies | Carts |
+| 12 | CUSTOMER | Companies | Leads |
+| 13 | COMPANY | Companies | Tasks |
+| 13 | COMPANY | Companies | Documents |
+| 13 | COMPANY | Companies | Journal |
+| 13 | COMPANY | Companies | Contacts |
+| 14 | GOAL | Users | Goals |
+| 15 | GOODSINCART | Carts | GoodsInCart |
+| 16 | GOODSINFO | Goods | GoodsInCart |
+| 17 | KNOWLEDGE | Users | Knowledge |
+| 18 | MARKETING | Marketing | Leads |
+| 18 | MARKETING | Marketing | Journal |
+| 19 | PAID_CART | Carts | Payments |
+| 20 | PERSON | Users | WorkReports |
+| 22 | PROJECT | Projects | Carts |
+| 22 | PROJECT | Projects | GoodsInCart |
+| 22 | PROJECT | Leads | WorkReports |
+| 22 | PROJECT | Projects | WorkReports |
+| 22 | PROJECT | Leads | GoodsInCart |
+| 23 | PROJECT_ASSIGNMENT_PROJECT | Projects | ProjectAssignments |
+| 24 | PROJECT_ASSIGNMENT_USER | Users | ProjectAssignments |
+| 25 | PROJECT_ORIGIN | Leads | Projects |
+| 26 | RATE | Users | Salaries |
+| 27 | SELF_RELATION | Users | Users |
+| 28 | OUTLOOKPROJECT | Projects | Emails |
+| 28 | OUTLOOKPROJECT | Companies | Emails |
+| 28 | OUTLOOKPROJECT | Leads | Emails |
+| 28 | OUTLOOKPROJECT | Marketing | Emails |
+| 30 | SUPERIORPROJECT | Projects | Projects |
+| 31 | SUPERIORITEM | Leads | Documents |
+| 31 | SUPERIORITEM | Leads | Journal |
+| 31 | SUPERIORITEM | Marketing | Documents |
+| 31 | SUPERIORITEM | Projects | Documents |
+| 31 | SUPERIORITEM | Projects | Journal |
+| 32 | SUPERVISOR | Users | Projects |
+| 32 | SUPERVISOR | Users | Users |
+| 34 | TASK | Tasks | WorkReports |
+| 35 | TASKDELEGATOR | Users | Tasks |
+| 36 | TASKORIGIN | Tasks | Emails |
+| 36 | TASKORIGIN | Tasks | Tasks |
+| 37 | TASKSOLVER | Users | Tasks |
+| 38 | TASKPARENT | Leads | Tasks |
+| 38 | TASKPARENT | Projects | Tasks |
+| 38 | TASKPARENT | Companies | Calendar |
+| 38 | TASKPARENT | Leads | Calendar |
+| 38 | TASKPARENT | Contacts | Calendar |
+| 38 | TASKPARENT | Projects | Calendar |
+| 38 | TASKPARENT | Tasks | Tasks |
+| 38 | TASKPARENT | Marketing | Tasks |
+| 41 | TOPLEVELPROJECT | Projects | Tasks |
+| 41 | TOPLEVELPROJECT | Marketing | Tasks |
+| 41 | TOPLEVELPROJECT | Leads | Tasks |
+| 43 | VACATION | Users | Vacation |
+| 44 | WORK_COMMITMENT | Users | WorkCommitments |
+| 47 | DEFAULT_GROUP | Groups | Users |
