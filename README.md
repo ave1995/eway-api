@@ -6,7 +6,7 @@ Visit the [eWay-CRM website](https://www.eway-crm.com) and sign up for a free tr
 
 Fork our [Postman collection](https://eway.cr/postman).
 
-Ask our [support](mailto:support@eway-crm.com) to generate ClientID / ClientSecret for you.
+Ask our [support](mailto:support@eway-crm.com) to generate ClientID / ClientSecret for your OAuth user flow (redirect URL is required).
 Or use our test service:
 * **WS URL**: https://free.eway-crm.com/31994
 * **UserName**: api
