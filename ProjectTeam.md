@@ -61,10 +61,13 @@ Same as every other `API.svc` method:
 
 ## Behavior to know
 
-- **Batch is all-or-nothing.** `AddProjectTeamMembers`, `RemoveProjectTeamMembers` and
-  `ChangeProjectTeamMemberRoles` run the whole batch in a single transaction. If any item fails
-  (e.g. adding a user who is already a member, or changing the role of a non-member), nothing is
-  saved and `ReturnCode` is an error.
+- **Batches are idempotent, not all-or-nothing.** `AddProjectTeamMembers` and
+  `RemoveProjectTeamMembers` process items one by one and are safe to re-send: adding a user who is
+  already a member (or listed twice in the same request) silently skips them, and removing a user who
+  is not on the team is a no-op. Items are **not** wrapped in one transaction, so if an item does fail
+  the items before it stay saved and `ReturnCode` is an error — just re-send the full desired list to
+  recover. `ChangeProjectTeamMemberRoles` is the exception: it still **fails on a non-member** (see
+  below), so send it only for users you know are on the team.
 - **Role is optional when adding.** `RoleGuid = null` adds a plain member without a role. (Roles
   are a licensed feature; on editions without it, members exist without roles.) Changing a role
   requires a non-null `RoleGuid`.
@@ -77,8 +80,9 @@ Same as every other `API.svc` method:
   demote the old PM first — just call `SetProjectManager` with the new user. Setting the same user
   again is a no-op.
 - **Removing a member** cleans everything up (TEAM relation, role record and the supervisor link if present).
-- **Adding an existing member fails** (no silent duplicate). Use `ChangeProjectTeamMemberRoles` to
-  change an existing member's role; setting the same role again is a no-op.
+- **Adding an existing member is skipped** (silently ignored, no error). Adding does not change the
+  role of someone already on the team — use `ChangeProjectTeamMemberRoles` for that; setting the same
+  role again is a no-op.
 
 ## Examples
 
@@ -122,4 +126,5 @@ POST /API.svc/RemoveProjectTeamMembers
 
 On failure, `ReturnCode` is not `"rcSuccess"` and `Description` carries the message — handle it the
 same way as for the other API endpoints. Typical causes: missing/zero `projectGuid` or `userGuid`,
-empty arrays, adding an already-member user, or changing the role of a non-member.
+empty arrays, or changing the role of a non-member. Adding an already-member user or removing a
+non-member is **not** an error (both are silently ignored).
